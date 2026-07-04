@@ -283,66 +283,27 @@ document.getElementById("descripcion");
 
 
 function mostrarInicio(){
+    // Ahora la plantilla de JavaScript también incluye tus nuevos atributos
+    contenido.innerHTML = `
+        <div class="card" data-seccion="primer" role="button" tabindex="0">
+            <h3>Primer Año</h3>
+            <p>Materias y cuadernillos.</p>
+        </div>
 
+        <div class="card">
+            <h3>Biblioteca</h3>
+            <p>Autores, conceptos y cronologías.</p>
+        </div>
 
-contenido.innerHTML = `
+        <div class="card">
+            <h3>Historia Antigua</h3>
+            <p>Acceso rápido a contenidos.</p>
+        </div>
+    `;
 
-
-<div class="card">
-
-<h3>
-Primer Año
-</h3>
-
-<p>
-Materias y cuadernillos.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Biblioteca
-</h3>
-
-<p>
-Autores, conceptos y cronologías.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Historia Antigua
-</h3>
-
-<p>
-Acceso rápido a contenidos.
-</p>
-
-</div>
-
-
-`;
-
-
-
-titulo.innerHTML =
-"Inicio";
-
-
-descripcion.innerHTML =
-"Biblioteca digital académica.";
-
-
+    titulo.innerHTML = "Inicio";
+    descripcion.innerHTML = "Biblioteca digital académica.";
 }
-
 
 
 
@@ -534,63 +495,27 @@ contenido.appendChild(card);
 
 
 // =================================
-// MENU LATERAL
+// MENU LATERAL Y NAVEGACIÓN GLOBAL
 // =================================
 
+document.addEventListener("click", (e) => {
+    // Buscamos si el elemento clickeado (o alguno de sus padres) tiene [data-seccion]
+    const enlace = e.target.closest("[data-seccion]");
+    
+    if (enlace) {
+        e.preventDefault();
+        const seccion = enlace.dataset.seccion;
 
-const enlaces =
-document.querySelectorAll(
-"[data-seccion]"
-);
+        switch(seccion){
+            case "inicio":
+                mostrarInicio();
+                break;
 
-
-
-enlaces.forEach(
-
-enlace=>{
-
-
-enlace.addEventListener(
-
-"click",
-
-(e)=>{
-
-
-e.preventDefault();
-
-
-
-const seccion =
-enlace.dataset.seccion;
-
-
-
-switch(seccion){
-
-
-case "inicio":
-
-mostrarInicio();
-
-break;
-
-
-
-case "primer":
-
-mostrarAño("primer");
-
-break;
-
-
-}
-
-
-
-});
-
-
+            case "primer":
+                mostrarAño("primer");
+                break;
+        }
+    }
 });
 
 
