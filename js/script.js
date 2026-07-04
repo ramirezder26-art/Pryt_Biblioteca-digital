@@ -288,7 +288,7 @@ function mostrarInicio(){
 contenido.innerHTML = `
 
 
-<div class="card">
+<div class="card" data-seccion="primer">
 
 <h3>
 Primer Año
