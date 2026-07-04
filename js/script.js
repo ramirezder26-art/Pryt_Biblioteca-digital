@@ -338,7 +338,8 @@ titulo.innerHTML =
 
 
 descripcion.innerHTML =
-"Biblioteca digital académica.";
+"Biblioteca digital académica."
+activarSecciones();
 
 
 }
