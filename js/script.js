@@ -392,16 +392,18 @@ ${materia.nombre}
 </h3>
 
 
-<a href="#"
-class="entrarMateria"
-data-id="${index}">
+card.innerHTML = `
 
-Ingresar
+<h3>
 
-</a>
+${materia.nombre}
 
+</h3>
 
 `;
+
+card.dataset.id = index;
+card.classList.add("entrarMateria");
 
 
 
