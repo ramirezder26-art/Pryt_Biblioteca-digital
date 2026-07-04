@@ -529,7 +529,63 @@ contenido.appendChild(card);
 }
 
 
+// =================================
+// ACTIVAR SECCIONES
+// =================================
 
+function activarSecciones(){
+
+    const enlaces =
+    document.querySelectorAll("[data-seccion]");
+
+    enlaces.forEach(enlace=>{
+
+        enlace.addEventListener("click",(e)=>{
+
+            e.preventDefault();
+
+            const seccion =
+            enlace.dataset.seccion;
+
+            switch(seccion){
+
+                case "inicio":
+
+                    mostrarInicio();
+
+                break;
+
+                case "primer":
+
+                    mostrarAño("primer");
+
+                break;
+
+                case "segundo":
+
+                    mostrarAño("segundo");
+
+                break;
+
+                case "tercero":
+
+                    mostrarAño("tercero");
+
+                break;
+
+                case "cuarto":
+
+                    mostrarAño("cuarto");
+
+                break;
+
+            }
+
+        });
+
+    });
+
+}
 
 
 
