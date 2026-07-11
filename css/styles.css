@@ -1,407 +1,234 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-body{
-
-    font-family:futura, serif;
-
-    background:#f4f4f4;
-
-    color:#222;
-
+body {
+    font-family: 'Inter', 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, Helvetica, sans-serif;
+    background: #f4f4f4;
+    color: #222;
 }
 
-
-/* CONTENEDOR GENERAL */
-
-.container{
-
-    display:flex;
-
-    min-height:100vh;
-
+/* ==================================================
+   CONTENEDOR GENERAL
+   ================================================== */
+.container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column; /* Estructura base preparada para móviles */
 }
 
-
-
-/* BARRA LATERAL FIJA */
-
-.sidebar{
-
-    width:280px;
-
-    background:#1f2937;
-
-    color:white;
-
-    padding:20px;
-
-    position:fixed;
-
-    left:0;
-
-    top:0;
-
-    height:100vh;
-
-    overflow:auto;
-
-}
-
-
-
-.sidebar h2{
-
-    margin-bottom:25px;
-
-    text-align:center;
-
-    line-height:1.8;
-
-}
-
-
-
-.sidebar input{
-
-    width:100%;
-
-    padding:10px;
-
-    border-radius:6px;
-
-    border:none;
-
-    margin-bottom:20px;
-
-}
-
-
-
-/* MENU */
-
-.sidebar nav a{
-
-    display:block;
-
-    color:white;
-
-    text-decoration:none;
-
-    padding:12px 8px;
-
-    border-radius:6px;
-
-    transition:.3s;
-
-}
-
-
-
-.sidebar nav a:hover{
-
-    background:#374151;
-
-}
-
-
-
-.sidebar hr{
-
-    margin:15px 0;
-
-}
-
-
-
-
-/* PANEL CENTRAL */
-
-main{
-
-    margin-left:280px;
-
-    width:calc(100% - 280px);
-
-    padding:40px;
-
-}
-
-
-
-/* CONTENEDOR DE TARJETAS */
-
-#contenido{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:25px;
-
-}
-
-
-
-header{
-
-    margin-bottom:30px;
-
-}
-
-
-
-header h1{
-
-    font-size:36px;
-
-    margin-bottom:10px;
-
-}
-
-
-
-
-/* TARJETAS */
-
-.card{
-
-    background:white;
-
-    padding:25px;
-
-    border-radius:15px;
-
-    box-shadow:
-    0 5px 15px rgba(0,0,0,.12);
-
-    transition:.3s;
-
-    display:flex;
-
-    flex-direction:column;
-
-    min-height:220px;
-
+/* BOTÓN DE MENÚ MÓVIL (Oculto en PC) */
+.mobile-menu-btn {
+    display: none;
+    background: #111827;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 18px;
     cursor: pointer;
-
+    text-align: left;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
-
-
-.card:hover{
-
-    transform:translateY(-6px);
-
+/* ==================================================
+   BARRA LATERAL FIJA
+   ================================================== */
+.sidebar {
+    width: 280px;
+    background: #111827;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow: auto;
+    z-index: 1000;
+    transition: transform 0.3s ease; /* Animación suave al abrir/cerrar en móviles */
 }
 
-
-
-.card h3{
-
-    margin-bottom:12px;
-
-    line-height:1.4;
-
+.sidebar h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    line-height: 1.1;
 }
 
-
-
-.card p{
-
-    margin-bottom:20px;
-
-    color:#555;
-
+.sidebar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 20px;
 }
 
-
-
-.card a{
-
-    display:inline-block;
-
-    padding:10px 15px;
-
-    background:#1f2937;
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:8px;
-
-    margin-top:auto;
-
-    align-self:flex-start;
-
+/* NAVEGACIÓN DEL MENÚ */
+.sidebar nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    margin: 3px 0;
+    background: #111827;
+    border: 1px solid #4b5563;
+    border-radius: 6px;
+    transition: .3s;
 }
 
-
-
-.card a:hover{
-
-    background:#374151;
-
+.sidebar hr {
+    margin: 10px 0;
 }
 
-
-
-/* BOTON */
-
-button{
-
-    margin-top:25px;
-
-    width:100%;
-
-    padding:12px;
-
-    border:none;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
+/* BOTÓN MODO OSCURO (Dentro del sidebar) */
+button#darkBtn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s;
 }
 
-
-
-/* MODO OSCURO */
-
-.dark{
-
-    background:#111827;
-
-    color:white;
-
+/* ==================================================
+   PANEL CENTRAL Y CONTENIDO
+   ================================================== */
+main {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    padding: 40px; 
+    flex-grow: 1;
 }
 
-
-
-.dark main{
-
-    color:white;
-
+header {
+    margin-bottom: 30px;
 }
 
-
-
-.dark .card{
-
-    background:#1f2937;
-
-    color:white;
-
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
 }
 
-
-
-.dark .card p{
-
-    color:#ddd;
-
+/* CONTENEDOR DE TARJETAS (Grid) */
+#contenido {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
 }
 
-
-
-.dark .card a{
-
-    background:#374151;
-
+/* ESTILOS DE TARJETAS */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.12);
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+    cursor: pointer;
 }
 
-
-
-
-/* RESPONSIVE */
-
-/* BOTÓN HAMBURGUESA */
-
-.menu-btn{
-
-    display:none;
-
+.card h3 {
+    margin-bottom: 12px;
+    line-height: 1;
 }
 
+.card p {
+    margin-bottom: 20px;
+    color: #555;
+}
 
-@media(max-width:768px){
+.card a {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #1f2937;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: auto;
+    align-self: flex-start;
+    transition: .3s;
+}
 
-    .container{
+/* ==================================================
+   EFECTOS HOVER (Solo para PC/Ratón)
+   ================================================== */
+@media (hover: hover) {
+    .sidebar nav a:hover {
+        background: #f4f4f4;
+        color: #111827;
+        font-weight: bold;
+    }
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 25px rgba(0,0,0,.20);
+    }
+    .card a:hover {
+        background: #374151;
+    }
+    button#darkBtn:hover {
+        background: #e5e7eb;
+    }
+}
 
-        flex-direction:column;
+/* ==================================================
+   MODO OSCURO
+   ================================================== */
+body.dark {
+    background: #111827;
+    color: white;
+}
 
+body.dark main {
+    color: white;
+}
+
+body.dark .card {
+    background: #1f2937;
+    color: white;
+}
+
+body.dark .card p {
+    color: #ddd;
+}
+
+body.dark .card a {
+    background: #374151;
+}
+
+/* ==================================================
+   RESPONSIVE (Móviles y Tablets pequeñas)
+   ================================================== */
+@media (max-width: 768px) {
+    /* Mostramos el botón hamburguesa */
+    .mobile-menu-btn {
+        display: block;
     }
 
-
-
-    .sidebar{
-
-    position:fixed;
-
-    top:0;
-
-    left:-300px;
-
-    width:260px;
-
-    height:100vh;
-
-    transition:.3s;
-
-    z-index:999;
-
-}
-
-
-    .menu-btn{
-
-    display:block;
-
-    position:fixed;
-
-    top:15px;
-
-    left:15px;
-
-    z-index:1000;
-
-    background:#1f2937;
-
-    color:white;
-
-    border:none;
-
-    border-radius:8px;
-
-    padding:12px 15px;
-
-    font-size:24px;
-
-    cursor:pointer;
-
-}
-    
-
-    main{
-
-        margin-left:0;
-
-        width:100%;
-
+    /* Escondemos el menú lateral fuera de la pantalla (Off-canvas) */
+    .sidebar {
+        transform: translateX(-100%);
     }
 
-
-
-    #contenido{
-
-        grid-template-columns:1fr;
-
+    /* Clase dinámica (se activa con JavaScript) para mostrar el menú */
+    .sidebar.active {
+        transform: translateX(0);
     }
 
+    /* Ajustamos el main para que ocupe todo el ancho */
+    main {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px 15px; /* Reducimos el padding para ahorrar espacio visual */
+    }
+
+    /* Las tarjetas pasan a una sola columna */
+    #contenido {
+        grid-template-columns: 1fr;
+    }
 }
